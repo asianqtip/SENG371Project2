@@ -6,6 +6,7 @@ from flaskblog import app, db, bcrypt
 from flaskblog.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
 from flaskblog.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
+from werkzeug.utils import secure_filename
 
 
 @app.route("/")
@@ -61,13 +62,13 @@ def logout():
 def save_picture(form_picture):
     random_hex = secrets.token_hex(8)
     _, f_ext = os.path.splitext(form_picture.filename)
-    picture_fn = random_hex + f_ext
+    picture_fn = form_picture.filename
     picture_path = os.path.join(app.root_path, 'static/profile_pics', picture_fn)
 
     output_size = (125, 125)
     i = Image.open(form_picture)
     i.thumbnail(output_size)
-    i.save(picture_path)
+    form_picture.save(picture_path)
 
     return picture_fn
 
@@ -92,19 +93,32 @@ def account():
     return render_template('account.html', title='Account',
                            image_file=image_file, form=form)
 
+def save_alg(form_alg):
+    random_hex = secrets.token_hex(8)
+    _, f_ext = os.path.splitext(form_alg.filename)
+    alg_fn = random_hex + f_ext
+    alg_path = os.path.join(app.root_path, 'static/algorithms', alg_fn)
+    form_alg.save(alg_path)
+
+    return alg_fn
 
 @app.route("/post/new", methods=['GET', 'POST'])
 @login_required
 def new_post():
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(title=form.title.data, content=form.content.data, author=current_user)
+        alg_filename = save_alg(form.alg.data)
+        #fileName = secure_filename(form.alg.data.filename)
+        #file_path = os.path.join(app.root_path, 'static/algorithms', fileName)
+        #f.save(file_path)
+        #form.alg.data.save(os.path.join(app.root_path, 'static/algorithms', fileName))
+        post = Post(title=form.title.data, alg_file = alg_filename, content=form.content.data, author=current_user)
         db.session.add(post)
         db.session.commit()
-        flash('Your post has been created!', 'success')
+        flash('Your algorithm has been posted!', 'success')
         return redirect(url_for('home'))
-    return render_template('create_post.html', title='New Post',
-                           form=form, legend='New Post')
+    return render_template('create_post.html', title='New Algorithm',
+                           form=form, legend='New Algorithm')
 
 
 @app.route("/post/<int:post_id>")
