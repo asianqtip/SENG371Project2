@@ -1,4 +1,4 @@
-'''Ths file initate the flask app and server'''
+'''This file initate the flask app and server'''
 from flaskblog import app
 from os import environ
 
