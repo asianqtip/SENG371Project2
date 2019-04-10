@@ -5,6 +5,9 @@
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
             <legend class="border-bottom mb-4">{{ legend }}</legend>
+            <p>When adding an algorithm, make sure that the algorithm takes two arguments.
+                The first argument will be the name of the dataset.
+                 The second argument will be the name of the resulting image.</p>
             <div class="form-group">
                 {{ form.title.label(class="form-control-label") }}
                 {% if form.title.errors %}
