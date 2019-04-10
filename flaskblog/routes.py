@@ -1,3 +1,4 @@
+'''This file details the directory of pages of the application and the operations of each page'''
 import os
 import secrets
 from PIL import Image
