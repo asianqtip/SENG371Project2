@@ -1,4 +1,4 @@
-# SENG371Project2
+# SENG 371 Project 2
 **_Minimum Effort_**
 
 This is the codebase of the SENG 371 Project 2 prototype as developed by Quynh, Max, and Jared.  
