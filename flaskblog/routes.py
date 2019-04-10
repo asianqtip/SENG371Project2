@@ -3,7 +3,7 @@ import secrets
 from PIL import Image
 from flask import render_template, url_for, flash, redirect, request, abort
 from flaskblog import app, db, bcrypt
-from flaskblog.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
+from flaskblog.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm, UploadForm
 from flaskblog.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
 from werkzeug.utils import secure_filename
@@ -167,3 +167,29 @@ def user_posts(username):
         .order_by(Post.date_posted.desc())\
         .paginate(page=page, per_page=5)
     return render_template('user_posts.html', posts=posts, user=user)
+
+@app.route("/run", methods=['GET', 'POST'])
+@login_required
+def run():
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=5)
+    entries = os.listdir(os.path.join(app.root_path, 'static/datasets'))
+    if request.method == 'POST':
+        algo = request.values.get('algorithms')
+        dataset = request.values.get('dataset')
+        flash(algo)
+        flash(dataset)
+        flash('Files selected', 'success')
+        return redirect(url_for('home'))
+    return render_template('run.html', posts=posts, entries=entries, legend='New Algorithm')
+
+
+@app.route("/upload", methods=['GET', 'POST'])
+@login_required
+def upload():
+    form = UploadForm()
+    if form.validate_on_submit():
+        form.data_file.data.save(os.path.join(app.root_path, 'static/datasets', form.data_file.data.filename))
+        flash('Your file has been uploaded', 'success')
+        return redirect(url_for('upload'))
+    return render_template('upload.html',form=form, legend='Upload Dataset')

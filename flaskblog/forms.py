@@ -61,3 +61,7 @@ class PostForm(FlaskForm):
     content = TextAreaField('Description', validators=[DataRequired()])
     alg = FileField('Upload Algorithm', validators=[FileRequired()])
     submit = SubmitField('Post')
+
+class UploadForm(FlaskForm):
+    data_file = FileField('Update dataset', validators=[FileRequired()])
+    submit = SubmitField('Upload')

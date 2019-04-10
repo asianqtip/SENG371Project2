@@ -1,12 +1,13 @@
 {% extends "layout.html" %}
 {% block content %}
     <form class= "form-group" action="" method="POST" name="run">
+        <legend class="border-bottom mb-4">{{ legend }}</legend>
         <p> Select the algorithm you would like to use. Default is the Polymer algorithm</p>
         <select class="form-group" name ="algorithms">
             {% for post in posts.items %}
             <option value="{{ post.alg_file }}">{{ post.title }}</option>
             {% endfor %}
-            <option value="polymer-v4.9.tar.gz" selected>Polymer</option>
+            <option value="polymer-v4.9.tar.gz" selected>Default</option>
         </select>
         <div>
         <p> Select the dataset you would like to use</p>
