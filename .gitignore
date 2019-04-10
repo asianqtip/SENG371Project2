@@ -102,3 +102,11 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+flaskblog/__pycache__/routes.cpython-36.pyc
+flaskblog/__pycache__/__init__.cpython-36.pyc
+flaskblog/__pycache__/forms.cpython-36.pyc
+flaskblog/__pycache__/models.cpython-36.pyc
+flaskblog/__pycache__/routes.cpython-36.pyc
+flaskblog/__pycache__/__init__.cpython-36.pyc
+flaskblog/__pycache__/forms.cpython-36.pyc
+flaskblog/__pycache__/models.cpython-36.pyc
