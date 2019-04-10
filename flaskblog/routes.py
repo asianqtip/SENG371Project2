@@ -10,13 +10,20 @@ from werkzeug.utils import secure_filename
 import subprocess
 
 
-@app.route("/")
-@app.route("/home")
+@app.route("/", methods=['GET', 'POST'])
+@app.route("/home", methods=['GET', 'POST'])
 def home():
     page = request.args.get('page', 1, type=int)
     posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=5)
-    return render_template('home.html', posts=posts)
-
+    entries = os.listdir(os.path.join(app.root_path, 'static/datasets'))
+    if request.method == 'POST':
+        algo = os.path.join(app.root_path, 'static/algorithms', request.values.get('algorithms'))
+        datapath = os.path.join(app.root_path, 'static/datasets', request.values.get('dataset'))
+        filename = os.path.join(app.root_path, 'static/results', request.values.get('dataset'))
+        flash('Processed!', 'success')
+        subprocess.call(['python', algo, datapath, filename])
+        return redirect(url_for('home'))
+    return render_template('home.html', posts=posts, entries=entries, legend='New Algorithm')
 
 @app.route("/about")
 def about():
@@ -169,7 +176,7 @@ def user_posts(username):
         .paginate(page=page, per_page=5)
     return render_template('user_posts.html', posts=posts, user=user)
 
-@app.route("/run", methods=['GET', 'POST'])
+"""@app.route("/run", methods=['GET', 'POST'])
 @login_required
 def run():
     page = request.args.get('page', 1, type=int)
@@ -183,6 +190,7 @@ def run():
         subprocess.call(['python', algo, datapath, filename])
         return redirect(url_for('run'))
     return render_template('run.html', posts=posts, entries=entries, legend='New Algorithm')
+    """
 
 
 @app.route("/upload", methods=['GET', 'POST'])
