@@ -196,7 +196,6 @@ def upload():
     return render_template('upload.html',form=form, legend='Upload Dataset')
 
 @app.route("/results", methods=['GET'])
-@login_required
 def results():
     entries = os.listdir(os.path.join(app.root_path, 'static/results'))
     result_path = os.path.join(app.root_path, 'static/results')
