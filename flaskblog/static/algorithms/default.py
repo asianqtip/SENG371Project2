@@ -1,3 +1,4 @@
+'''This algorithm takes a jpeg/jpg file as input and produces a file with inverted colours'''
 from PIL import Image
 import PIL.ImageOps
 import sys   
