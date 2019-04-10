@@ -2,12 +2,12 @@
 {% block content %}
     <form class= "form-group" action="" method="POST" name="run">
         <legend class="border-bottom mb-4">{{ legend }}</legend>
-        <p> Select the algorithm you would like to use. Default is the Polymer algorithm</p>
+        <p> Select the algorithm you would like to use. Default algorithm inverts the colours of a JPEG image</p>
         <select class="form-group" name ="algorithms">
             {% for post in posts.items %}
             <option value="{{ post.alg_file }}">{{ post.title }}</option>
             {% endfor %}
-            <option value="polymer-v4.9.tar.gz" selected>Default</option>
+            <option value="default.py" selected>Default</option>
         </select>
         <div>
         <p> Select the dataset you would like to use</p>

@@ -5,6 +5,7 @@
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
             <legend class="border-bottom mb-4">{{ legend }}</legend>
+            <p> Default algorithm only works on JPG and JPEG files. As of now, only these image files will be accepted.</p>
             <div class="form-group">
                     {{ form.data_file.label() }}
                     {{ form.data_file(class="form-control-file") }}

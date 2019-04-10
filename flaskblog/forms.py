@@ -63,5 +63,5 @@ class PostForm(FlaskForm):
     submit = SubmitField('Post')
 
 class UploadForm(FlaskForm):
-    data_file = FileField('Update dataset', validators=[FileRequired()])
+    data_file = FileField('image', validators=[FileRequired(), FileAllowed(['jpg','jpeg', 'png'], 'Images only!')])
     submit = SubmitField('Upload')

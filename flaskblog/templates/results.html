@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block content %}
+        <legend class="border-bottom mb-4">{{ legend }}</legend>
+        <p> Gallery of the resulting images</p>
+        <div>
+        {% for entry in entries %}
+        <img src="/static/results/{{entry}}">
+        <hr>
+        {% endfor %}
+        </div>
+{% endblock content %}

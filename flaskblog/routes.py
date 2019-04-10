@@ -7,6 +7,7 @@ from flaskblog.forms import RegistrationForm, LoginForm, UpdateAccountForm, Post
 from flaskblog.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
 from werkzeug.utils import secure_filename
+import subprocess
 
 
 @app.route("/")
@@ -175,12 +176,12 @@ def run():
     posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=5)
     entries = os.listdir(os.path.join(app.root_path, 'static/datasets'))
     if request.method == 'POST':
-        algo = request.values.get('algorithms')
-        dataset = request.values.get('dataset')
-        flash(algo)
-        flash(dataset)
+        algo = os.path.join(app.root_path, 'static/algorithms', request.values.get('algorithms'))
+        datapath = os.path.join(app.root_path, 'static/datasets', request.values.get('dataset'))
+        filename = os.path.join(app.root_path, 'static/results', request.values.get('dataset'))
         flash('Files selected', 'success')
-        return redirect(url_for('home'))
+        subprocess.call(['python', algo, datapath, filename])
+        return redirect(url_for('run'))
     return render_template('run.html', posts=posts, entries=entries, legend='New Algorithm')
 
 
@@ -193,3 +194,10 @@ def upload():
         flash('Your file has been uploaded', 'success')
         return redirect(url_for('upload'))
     return render_template('upload.html',form=form, legend='Upload Dataset')
+
+@app.route("/results", methods=['GET'])
+@login_required
+def results():
+    entries = os.listdir(os.path.join(app.root_path, 'static/results'))
+    result_path = os.path.join(app.root_path, 'static/results')
+    return render_template('results.html', entries=entries, legend='Results', result_path=result_path)
