@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+    db:
+        image: postgres
+    web:
+        build: .
+        command: python run.py
+    ports:
+        -"8000:8000"
