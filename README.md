@@ -52,6 +52,6 @@ If you would prefer to look at our most recent build, click [here](http://mineff
 *Note that the app will require registration with email and password. This email does not have to be a real account*
 
 ## Walkthough
-If you need assistance with using the application, or would like a video walkthrough of the application, we have created a two-part guide to our system.</br>
+If you need any assistance with using the application, or would like a video walkthrough of the application, we have created a two-part guide to our system.</br>
 [Part 1](https://drive.google.com/open?id=1QVLl8FdpIeJubv9ryo2QPtxhomGb-kgR). </br>
 [Part 2](https://drive.google.com/open?id=1Rqpl6rFAtXzcE2dKf_Lr725yXKtD97mg). 
