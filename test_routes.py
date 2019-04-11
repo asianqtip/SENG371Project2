@@ -27,10 +27,6 @@ class TestIntegrations(TestCase):
     def test_login(self):
         response = self.app.get('/login')
         assert response.status_code == 200
-    
-    def test_logout(self):
-        response = self.app.get('/logout')
-        assert response.status_code == 200
 
     def test_results(self):
         response = self.app.get('/results')
