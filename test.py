@@ -1,9 +1,9 @@
-import unittest
+import pytest
 
-class TestStringMethods(unittest.TestCase):
+def func(x):
+    return x + 1
 
-    def test_dummy(self):
-        self.assertEqual('1', '1')
+def test_answer():
+    assert func(3) == 4
 
-if __name__ == '__main__':
-    unittest.main()
+
