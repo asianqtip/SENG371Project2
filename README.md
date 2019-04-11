@@ -53,5 +53,5 @@ If you would prefer to look at our most recent build, click [here](http://mineff
 
 ## Walkthough
 If you need any assistance with using the application, or would like a video walkthrough of the application, we have created a two-part guide to our system.</br>
-[Part 1](https://drive.google.com/open?id=1QVLl8FdpIeJubv9ryo2QPtxhomGb-kgR). </br>
-[Part 2](https://drive.google.com/open?id=1Rqpl6rFAtXzcE2dKf_Lr725yXKtD97mg). 
+[Part 1](https://drive.google.com/open?id=1QVLl8FdpIeJubv9ryo2QPtxhomGb-kgR) </br>
+[Part 2](https://drive.google.com/open?id=1Rqpl6rFAtXzcE2dKf_Lr725yXKtD97mg)
