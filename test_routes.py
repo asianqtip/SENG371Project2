@@ -1,5 +1,5 @@
 from flask import Flask
-from flaskblog import routes, app
+from flaskblog import routes, app, db, bcrypt
 from flask import render_template, url_for, flash, redirect, request, abort
 import os
 import tempfile
@@ -11,6 +11,7 @@ class TestIntegrations(TestCase):
         self.app = app.test_client()
 
     def test_home(self):
+        db.create_all()
         response = self.app.get('/')
         assert response.status_code == 200
         response = self.app.get('/home')

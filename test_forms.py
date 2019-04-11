@@ -7,6 +7,7 @@ import tempfile
 import pytest
 from unittest import TestCase
 
+
 class FormTest(TestCase):
     def setUp(self):
         self.app = app.test_client()
@@ -26,6 +27,7 @@ class FormTest(TestCase):
             form = UploadForm()
         self.assertIsInstance(form, UploadForm)
     
- 
+    if __name__ == "__main__":
+        unittest.main()
 
     
