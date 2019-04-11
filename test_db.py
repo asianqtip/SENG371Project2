@@ -5,15 +5,15 @@ import os
 import tempfile
 import pytest
 from unittest import TestCase
-from flaskblog.models import User
+from flaskblog.models import User, Post
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
 
 
 
-def _init_database():
+def add_user():
     hashed_password = bcrypt.generate_password_hash('killmeplz').decode('utf-8')
-    user = User(username="john", email="john@example.com", password=hashed_password)
+    user = User(username="John", email="john@example.com", password=hashed_password)
     db.session.add(user)
     db.session.commit()
 
@@ -24,14 +24,31 @@ class ModelsTest(TestCase):
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
         db.drop_all()
         db.create_all()
-        _init_database() 
+        add_user() 
 
     def tearDown(self):
         db.session.remove()
         db.drop_all()
 
-    def test_case_1(self):
+    def test_user(self):
         self.assertTrue(User.query.count() == 1)
+        hashed_password = bcrypt.generate_password_hash('killmepls').decode('utf-8')
+        user = User(username="Lizzy", email="liz@example.com", password=hashed_password)
+        db.session.add(user)
+        db.session.commit()
+        self.assertTrue(User.query.count() == 2)
+        user1 = User.query.first()
+        assert user1.username == "John"
 
-if __name__ == '__main__':
-    unittest.main()
+    def test_post(self):
+        user = User(username="Lizzy", email="liz@example.com", password="password")
+        post = Post(title="Death", alg_file = "death.py", content="description", author=user)
+        db.session.add(post)
+        db.session.commit()
+        self.assertTrue(Post.query.count() == 1)
+        post1 = Post.query.first()
+        assert post1.title == "Death"
+        assert post1.alg_file == "death.py"
+
+    if __name__ == '__main__':
+        unittest.main()
