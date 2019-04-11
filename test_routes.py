@@ -1,10 +1,15 @@
-from flask import request
 from flask import Flask
-from flaskblog import routes
+from flaskblog import routes, app
+from flask import render_template, url_for, flash, redirect, request, abort
+import os
+import tempfile
+import pytest
+from unittest import TestCase
 
-def test_home():
-    app=Flask(__name__)
-    client = app.test_client()
-    url='l'
-    response = client.get(url)
-    assert response.status_code == 200
+class TestIntegrations(TestCase):
+    def setUp(self):
+        self.app = app.test_client()
+
+    def test_thing(self):
+        response = self.app.get('/')
+        assert response.status_code == 200
