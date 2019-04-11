@@ -25,7 +25,7 @@ script:
 ```
 to the .travis.yml file.
 </br>
-files must be properly named using the pytest convention, which is: test_<namehere>.py
+files must be properly named using the pytest convention, which is: test_*namehere*.py
 
 ## Docker setup
 ### Installation
