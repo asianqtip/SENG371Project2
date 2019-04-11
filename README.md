@@ -29,17 +29,19 @@ To install docker-compose, run the following command:
 sudo apt-get install docker-compose
 ```
 
-### Building
+### Building and Running
 For Docker:
 ```
 sudo docker build -t app .
 sudo docker run app
 ```
-</br>
+
 For docker-compose:
 ```
 sudo docker-compose up
 ```
-</br>
+
+## Heroku Deployment
+The cloud deployment of our app can be found [here](https://dashboard.heroku.com/apps/mineffort/deploy/github)
 
 
