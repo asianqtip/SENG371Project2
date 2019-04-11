@@ -18,7 +18,12 @@ pip install -r requirements.txt
 ```
 
 ## Running the tests
-Need to create tests
+Currently using Travis CI to automatically run tests new commit. To set this up, simply add
+```
+script:
+  - pytest
+```
+to the .travis.yml file
 
 ## Docker setup
 ### Installation
