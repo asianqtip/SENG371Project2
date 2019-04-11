@@ -17,9 +17,11 @@ source env/bin/activate
 pip install -r requirements.txt
 ```
 </br>
+
 ## Running the tests
 Need to create tests
 </br>
+
 ## Docker setup
 ### Installation
 Docker CE and docker-compose is needed to build the container.
@@ -29,6 +31,7 @@ To install docker-compose, run the following command:
 sudo apt-get install docker-compose
 ```
 </br>
+
 ### Building
 For Docker:
 ```
@@ -36,6 +39,7 @@ sudo docker build -t app .
 sudo docker run app
 ```
 </br>
+
 For docker-compose:
 ```
 sudo docker-compose up
