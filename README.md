@@ -42,6 +42,9 @@ sudo docker-compose up
 ```
 
 ## Heroku Deployment
-The cloud deployment of our app can be found [here](https://dashboard.heroku.com/apps/mineffort/deploy/github)
+The cloud deployment of our app can be found [here](https://dashboard.heroku.com/apps/mineffort/deploy/github).  
+If you would prefer to look at our most recent build, click [here](http://mineffort.herokuapp.com/account).  
+*Note that the app will require registration with email and password. This email does not have to be a real account*
+
 
 
