@@ -7,7 +7,7 @@ The purpose of this prototype is to address some of the key concerns that a hypo
 and give a conceptualization of what might be needed for a future product.  
 </br>
 Please visit: https://docs.google.com/document/d/17Rm4rD2s79t00I6hPxBv1mBdbo1hP-eilVXdIaQSyRc/edit?usp=sharing
-</br>
+
 ## Development
 ### Virtual Environment
 Python3.6 is needed for this application. The virtual environment can be setup with 
